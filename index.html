@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Progress Bars</title>
+
+  <!-- 📋 Load custom font for overall styling -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+  <style>
+    /* 🌐 GENERAL BODY STYLING */
+    body {
+      font-family: 'Roboto', sans-serif;        /* Change font family */
+      background-color: #f9f9f9;                /* Page background color */
+      color: #333;                              /* Default text color */
+      padding: 6px;                             /* Outer padding for content */
+      margin: 0;
+      max-width: 600px;                         /* Set max width for layout */
+      overflow-y: hidden;
+    }
+
+    /* 📦 CONTAINER FOR EACH PROGRESS BLOCK */
+    .progress-container {
+      margin-bottom: 6px;                       /* Vertical gap between bars */
+    }
+
+    /* 🏷️ LABEL ABOVE EACH BAR */
+    .label {
+      font-weight: bold;
+      font-size: 0.9em;                         /* Label text size */
+      margin-bottom: 2px;
+      display: flex;
+      align-items: center;
+      gap: 5px;                                 /* Space between emoji and text */
+    }
+
+    /* ⬜ BACKGROUND TRACK BEHIND PROGRESS */
+    .bar-background {
+      width: 100%;                              /* Full width of container */
+      background: #e2e2e2;                      /* Light grey track color */
+      border-radius: 5px;                       /* Rounded edges */
+      overflow: hidden;
+      box-shadow: inset 0 0.5px 1px rgba(0,0,0,0.1); /* Inner shadow */
+      height: 14px;                             /* Bar height (adjustable) */
+    }
+
+    /* 🟦 FILLED BAR WITH PERCENTAGE TEXT */
+    .bar-fill {
+      height: 100%;                             /* Match .bar-background height */
+      line-height: 14px;                        /* Vertically center text */
+      color: white;
+      font-weight: bold;
+      text-align: right;                        /* Align percentage to right */
+      padding-right: 6px;                       /* Right-side gap for text */
+      white-space: nowrap;
+      font-size: 0.75em;                        /* Text size inside bar */
+      animation: fillBar 1s ease-out forwards;  /* Generic animation fallback */
+    }
+
+    /* 🎯 ANIMATIONS FOR EACH BAR TYPE (Customize values here) */
+    @keyframes fillBarProject { from { width: 0%; } to { width: 72%; } }   /* Change '72%' to your desired value */
+    @keyframes fillBarInvoice { from { width: 0%; } to { width: 45%; } }   /* Change '45%' here */
+    @keyframes fillBarDelivery { from { width: 0%; } to { width: 100%; } } /* Change '100%' if needed */
+
+    /* 🎨 COLOR AND ANIMATION CLASSES */
+    .project { background: linear-gradient(to right, #0078d4, #00bcf2); animation-name: fillBarProject; }
+    .invoice { background: linear-gradient(to right, #d9534f, #f57c6c); animation-name: fillBarInvoice; }
+    .delivery { background: linear-gradient(to right, #28a745, #85d68a); animation-name: fillBarDelivery; }
+
+    /* 📱 RESPONSIVE ADJUSTMENTS FOR SMALL SCREENS */
+    @media (max-width: 500px) {
+      body {
+        padding: 4px;
+        max-width: 100%;
+      }
+      .bar-background {
+        height: 12px;                           /* Reduce bar height */
+      }
+      .bar-fill {
+        font-size: 0.7em;                       /* Smaller text size */
+        padding-right: 5px;
+        line-height: 12px;
+      }
+      .label {
+        font-size: 0.85em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🚧 PROJECT PROGRESS BAR -->
+  <div class="progress-container">
+    <div class="label">🚧 Project Progress</div> <!-- Title for the first bar -->
+    <div class="bar-background">
+      <div class="bar-fill project">72%</div> <!-- 📝 Change text for visual percentage -->
+    </div>
+  </div>
+
+  <!-- 📄 INVOICING COMPLETION BAR -->
+  <div class="progress-container">
+    <div class="label">📄 Invoicing Completion</div>
+    <div class="bar-background">
+      <div class="bar-fill invoice">45%</div>
+    </div>
+  </div>
+
+  <!-- 🚚 DELIVERY COMPLETION BAR -->
+  <div class="progress-container">
+    <div class="label">🚚 No. of Claims</div>
+    <div class="bar-background">
+      <div class="bar-fill delivery">100%</div>
+    </div>
+  </div>
+
+</body>
+</html>
